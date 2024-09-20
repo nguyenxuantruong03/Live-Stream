@@ -11,7 +11,7 @@ export const Logo = () => {
   return (
     <div className={cn("flex flex-col items-center gap-y-4", font.className)}>
       <div className="bg-white rounded-full p-1">
-        <Image src="pen.svg" alt="404" height="80" width="80" />
+        <Image src="/pen.svg" alt="404" height="80" width="80" />
       </div>
       <div className="flex flex-col items-center">
         <p className="text-xl font-semibold">Hamehub</p>
