@@ -20,7 +20,7 @@ export const getFollowedUsers = async () => {
         following: true,
       },
     });
-    return followedUsers
+    return followedUsers;
   } catch {
     return [];
   }
@@ -60,6 +60,10 @@ export const followUser = async (id: string) => {
   });
 
   if (!otherUser) {
+    throw new Error("User not found");
+  }
+
+  if (otherUser.id === self.id) {
     throw new Error("Cannot follow yourself");
   }
 
