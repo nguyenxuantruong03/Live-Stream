@@ -15,6 +15,7 @@ export const getRecommended = async () => {
 
   if (userId) {
     //Logic này giúp đảm bảo rằng nếu đã có follower thì không hiển thị recommended nữa
+    //Bên cạnh đó nếu bị block sẽ không được hiển thị
     users = await db.user.findMany({
       where: {
         AND: [
@@ -32,6 +33,15 @@ export const getRecommended = async () => {
               },
             },
           },
+          {
+            NOT: {
+              blocking : {
+                some:{
+                  blockedId: userId
+                }
+              }
+            }
+          }
         ],
       },
       orderBy: {

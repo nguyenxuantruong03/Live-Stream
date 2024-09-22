@@ -4,14 +4,23 @@ import { getSelf } from "./auth-service";
 export const getFollowedUsers = async () => {
   try {
     const self = await getSelf();
-    return db.follow.findMany({
+    //Nếu bị block thì không được get ra ở follow
+    const followedUsers = db.follow.findMany({
       where: {
         followerId: self.id,
+        following: {
+          blocking: {
+            none: {
+              blockedId: self.id,
+            },
+          },
+        },
       },
       include: {
         following: true,
       },
     });
+    return followedUsers
   } catch {
     return [];
   }
