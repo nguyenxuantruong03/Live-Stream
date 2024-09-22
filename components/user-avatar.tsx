@@ -1,5 +1,4 @@
 import { cva, type VariantProps } from "class-variance-authority";
-
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -8,7 +7,7 @@ import { LiveBadge } from "./live-badge";
 const avatarSizes = cva("", {
   variants: {
     size: {
-      default: "h-8 w-8 ",
+      default: "h-8 w-8",
       lg: "h-14 w-14",
     },
   },
@@ -56,14 +55,12 @@ export const UserAvatar = ({
   );
 };
 
-interface UserAvatarSkeletonProps extends VariantProps<typeof avatarSizes> {};
-
-
-export const UserAvatarSkeleton = ({size} : UserAvatarSkeletonProps) =>{
+export const UserAvatarSkeleton = ({
+  size,
+}: VariantProps<typeof avatarSizes>) => {
   return (
-    <Skeleton className={cn(
-      "rounded-full",
-      avatarSizes({size}),
-    )}/>
-  )
-}
+    <Skeleton
+      className={cn("rounded-full", avatarSizes({ size }))}
+    />
+  );
+};
