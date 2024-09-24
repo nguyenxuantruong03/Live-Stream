@@ -32,7 +32,7 @@ export const CommunityItem = ({
       if(!participantName || isSelf || !isHost) return
 
       startTransition(() =>{
-        onBlock(participantName)
+        onBlock(participantIdentity)
         .then(() => toast.success(`Blocked ${participantName}`))
         .catch(() => toast.error("Something went wrong"))
       })

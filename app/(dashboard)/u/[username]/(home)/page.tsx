@@ -18,7 +18,7 @@ const CreatorPage = async ({ params }: CreatorProps) => {
 
   return (
     <div className="h-full">
-      <StreamPlayer user={user} stream={user.stream} isFollowing />
+      <StreamPlayer user={user} stream={user.stream} isFollowing={true} />
     </div>
   );
 };
